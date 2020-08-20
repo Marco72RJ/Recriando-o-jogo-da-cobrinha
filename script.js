@@ -7,6 +7,8 @@ x: 8 * box,
 y: 8 * box
 }
 
+let joystick = "right";
+
 function criarBG() {
 context.fillStyle = "lightgreen";
 context.fillRect(0, 0, 16 * box, 16 * box);
@@ -19,5 +21,27 @@ function criarCobrinha(){
     }
 }
 
-criarBG();
-criarCobrinha();
+function iniciarJogo(){
+
+    criarBG();
+    criarCobrinha();
+
+    let cobrax = cobra[0].x;
+    let cobray = cobra[0].y;
+
+    if(joystick == "right") cobrax += box;
+    if(joystick == "left") cobrax -= box;  
+    if(joystick == "up") cobray -= box;
+    if(joystick == "down") cobray += box;
+
+    cobra.pop();
+
+    let newHead = {
+    x: cobrax,
+    y: cobray
+    }
+
+    cobra.unshift(newHead);
+}
+
+let jogo = setInterval(iniciarJogo, 100);
