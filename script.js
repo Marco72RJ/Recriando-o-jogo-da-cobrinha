@@ -47,6 +47,7 @@ if(cobra[0].y < 0 && joystick == "up") cobra[0].y = 16 * box;
 
     criarBG();
     criarCobrinha();
+    comidinha();
 
     let cobrax = cobra[0].x;
     let cobray = cobra[0].y;
@@ -56,8 +57,13 @@ if(cobra[0].y < 0 && joystick == "up") cobra[0].y = 16 * box;
     if(joystick == "up") cobray -= box;
     if(joystick == "down") cobray += box;
 
-    cobra.pop();
-
+    if(cobrax != comida.x || cobray != comida.y){
+        cobra.pop();
+    }
+    else{comida.x = Math.floor(Math.random() * 15 + 1) * box;
+        comida.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
+    
     let newHead = {
     x: cobrax,
     y: cobray
