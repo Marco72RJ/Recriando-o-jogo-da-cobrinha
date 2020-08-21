@@ -8,6 +8,10 @@ y: 8 * box
 }
 
 let joystick = "right";
+let comida = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box,
+}
 
 function criarBG() {
 context.fillStyle = "lightgreen";
@@ -19,6 +23,11 @@ function criarCobrinha(){
         context.fillStyle = "green";
         context.fillRect(cobra[i].x, cobra[i].y, box, box);
     }
+}
+
+function comidinha() {
+context.fillStyle = "red";
+context.fillRect(comida.x, comida.y, box, box)
 }
 
 document.addEventListener('keydown', update);
